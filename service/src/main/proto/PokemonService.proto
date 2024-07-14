@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+enum PokemonType {
+
+  NORMAL = 0;
+
+  FIRE = 1;
+
+  WATER = 2;
+
+  ELECTRIC = 3;
+
+  GRASS = 4;
+
+  ICE = 5;
+
+  FIGHTING = 6;
+
+  POISON = 7;
+
+}
+
+message PokemonRequest {
+
+  string pokemonName = 1;
+
+}
+
+message Pokemon {
+
+  string name = 1;
+
+  int32 health = 2;
+
+  string description = 3;
+
+  repeated PokemonType types = 4;
+
+}
+
+message PokemonResponse {
+
+  optional Pokemon pokemon = 2;
+
+}
+
+service PokemonService {
+
+  rpc GetPokemon (PokemonRequest) returns (PokemonResponse) {}
+
+}
